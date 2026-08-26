@@ -26,20 +26,20 @@ function HeaderInner() {
     <header className="glass-header">
       <div className="container header-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem 2rem' }}>
         
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.2rem', textDecoration: 'none' }}>
+          <span style={{ fontSize: '2rem', fontWeight: 900, color: '#fff', letterSpacing: '-1.5px', lineHeight: 1 }}>
+            Tudo<span style={{ color: 'rgba(255,255,255,0.5)', fontWeight: 300 }}>|</span><span style={{ color: 'var(--accent)' }}>Well</span>
+          </span>
+        </Link>
+        
         {/* Hamburger Button (Mobile Only) */}
         <button 
           className="mobile-only hamburger-btn" 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          style={{ background: 'none', fontSize: '1.5rem', color: 'var(--foreground)', cursor: 'pointer', padding: '0.2rem' }}
+          style={{ background: 'none', fontSize: '1.5rem', color: '#fff', cursor: 'pointer', padding: '0.2rem' }}
         >
           {isMobileMenuOpen ? '✕' : '☰'}
         </button>
-
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.2rem', textDecoration: 'none' }}>
-          <span style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--primary)', letterSpacing: '-1.5px', lineHeight: 1 }}>
-            Tudo<span style={{ color: '#000', fontWeight: 300 }}>|</span><span style={{ color: 'var(--accent)' }}>Well</span>
-          </span>
-        </Link>
         
         <form className="desktop-flex" onSubmit={handleSearch} style={{ flexGrow: 1, maxWidth: '600px', display: 'flex', margin: '0 2rem', position: 'relative' }}>
           <span style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--secondary)', fontSize: '1.2rem' }}>⌕</span>
@@ -52,7 +52,7 @@ function HeaderInner() {
               width: '100%',
               padding: '0.75rem 1rem 0.75rem 3rem',
               borderRadius: 'var(--radius-sm)',
-              border: '1px solid var(--card-border)',
+              border: 'none',
               background: '#fff',
               color: 'var(--foreground)'
             }}
@@ -60,7 +60,7 @@ function HeaderInner() {
         </form>
 
         <div className="desktop-flex" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', fontSize: '0.875rem' }}>
-          <Link href="/sobre" style={{ fontWeight: 600, color: 'var(--secondary)' }}>
+          <Link href="/sobre" style={{ fontWeight: 600, color: '#fff' }}>
             Sobre & Ajuda
           </Link>
         </div>
@@ -106,7 +106,7 @@ function HeaderInner() {
       )}
 
       {/* Categoria Nav Desktop */}
-      <div className="desktop-only" style={{ borderTop: '1px solid var(--card-border)', padding: '0.75rem 0' }}>
+      <div className="desktop-only" style={{ borderTop: '1px solid rgba(255,255,255,0.2)', padding: '0.75rem 0' }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 600, fontSize: '0.8rem', textTransform: 'uppercase' }}>
           <Link href="/?categoria=tecnologia">Tecnologia ⌄</Link>
           <Link href="/?categoria=eletro">Eletrodomésticos ⌄</Link>
