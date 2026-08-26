@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum StatusProduto {
+  ATIVO
+  OCULTO
+  EXPIRADO
+}
+
+model Produto {
+  id            String        @id @default(cuid())
+  nome          String
+  descricao     String?
+  preco         Decimal?      // Preço capturado no cadastro
+  avaliacao     Float?        // Nota do produto (0 a 5)
+  imagemUrl     String        // URL da imagem já hospedada no storage
+  linkAfiliado  String        // Link original de afiliado
+  plataforma    String        // "mercadolivre" | "shopee"
+  categoria     String?
+  ordem         Int           @default(0)
+  status        StatusProduto @default(ATIVO)
+  ultimaChecagem DateTime?    // Última verificação do cron
+  criadoEm      DateTime      @default(now())
+  atualizadoEm  DateTime      @updatedAt
+
+  @@index([status])
+  @@index([categoria])
+}
+
+model ConfiguracaoSite {
+  id            String  @id @default("singleton")
+  nomeSite      String
+  logoUrl       String?
+  corPrimaria   String?
+  corSecundaria String?
+}
