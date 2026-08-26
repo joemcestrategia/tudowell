@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const revalidate = 0;
 
 export default async function ProdutosExpirados() {
-  let produtos = [];
+  let produtos: any[] = [];
   try {
     produtos = await prisma.produto.findMany({
       where: { status: 'EXPIRADO' },

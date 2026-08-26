@@ -11,7 +11,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Link é obrigatório' }, { status: 400 });
     }
 
-    let data;
+    let data: any;
 
     if (link.includes('mercadolivre.com') || link.includes('mercadolibre.com')) {
       data = await extractMercadoLivre(link);

@@ -30,11 +30,11 @@ export default async function Home({ searchParams }: PageProps) {
     status: 'ATIVO',
   };
 
-  if (query) where.nome = { contains: query, mode: 'insensitive' };
+  if (query) where.nome = { contains: query };
   if (categoria) where.categoria = categoria;
   if (plataforma) where.plataforma = plataforma;
 
-  let produtos = [];
+  let produtos: any[] = [];
   try {
     produtos = await prisma.produto.findMany({
       where,

@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const revalidate = 0; // Don't cache admin pages
 
 export default async function AdminProdutos() {
-  let produtos = [];
+  let produtos: any[] = [];
   try {
     produtos = await prisma.produto.findMany({
       where: {
