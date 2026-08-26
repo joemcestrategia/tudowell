@@ -13,7 +13,7 @@ export async function POST(request: Request) {
 
     let data: any;
 
-    if (link.includes('mercadolivre.com') || link.includes('mercadolibre.com')) {
+    if (link.includes('mercadolivre.com') || link.includes('mercadolibre.com') || link.includes('meli.la')) {
       data = await extractMercadoLivre(link);
     } else if (link.includes('shopee.com') || link.includes('s.shopee.com')) {
       data = await extractShopee(link);

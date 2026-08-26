@@ -207,32 +207,29 @@ export default async function Home({ searchParams }: PageProps) {
           </div>
         )}
 
-        <div className="products-header">
-          <h2 className="section-title">
-            {query || categoria ? 'Produtos encontrados' : 'Recém Adicionados (Novidades)'}
-          </h2>
-          
-          <div className="sort-container">
-            <span>Ordenar por:</span>
-            <select>
-              <option>Mais recentes</option>
-              <option>Menor Preço</option>
-              <option>Maior Preço</option>
-            </select>
-          </div>
-        </div>
+        {produtos.length > 0 && (
+          <>
+            <div className="products-header">
+              <h2 className="section-title">
+                {query || categoria ? 'Produtos encontrados' : 'Recém Adicionados (Novidades)'}
+              </h2>
+              
+              <div className="sort-container">
+                <span>Ordenar por:</span>
+                <select>
+                  <option>Mais recentes</option>
+                  <option>Menor Preço</option>
+                  <option>Maior Preço</option>
+                </select>
+              </div>
+            </div>
 
-        {produtos.length > 0 ? (
-          <div className="product-grid">
-            {produtos.map((p) => (
-              <ProductCard key={p.id} produto={p} />
-            ))}
-          </div>
-        ) : (
-          <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
-            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Nenhum produto encontrado</h3>
-            <p style={{ color: 'var(--secondary)' }}>Tente ajustar seus filtros ou termos de busca.</p>
-          </div>
+            <div className="product-grid">
+              {produtos.map((p) => (
+                <ProductCard key={p.id} produto={p} />
+              ))}
+            </div>
+          </>
         )}
       </main>
     </>
