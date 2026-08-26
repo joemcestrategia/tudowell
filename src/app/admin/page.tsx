@@ -31,7 +31,8 @@ export default async function AdminProdutos() {
             <tr style={{ background: 'rgba(0,0,0,0.02)', borderBottom: '1px solid var(--card-border)' }}>
               <th style={{ padding: '1rem', fontWeight: 600 }}>Imagem</th>
               <th style={{ padding: '1rem', fontWeight: 600 }}>Nome</th>
-              <th style={{ padding: '1rem', fontWeight: 600 }}>Plataforma</th>
+              <th style={{ padding: '1rem', fontWeight: 600 }}>Categoria</th>
+              <th style={{ padding: '1rem', fontWeight: 600 }}>Subcategoria</th>
               <th style={{ padding: '1rem', fontWeight: 600 }}>Status</th>
               <th style={{ padding: '1rem', fontWeight: 600 }}>Ordem</th>
               <th style={{ padding: '1rem', fontWeight: 600 }}>Ações</th>
@@ -40,7 +41,7 @@ export default async function AdminProdutos() {
           <tbody>
             {produtos.length === 0 && (
               <tr>
-                <td colSpan={6} style={{ padding: '2rem', textAlign: 'center', color: 'var(--secondary)' }}>Nenhum produto cadastrado.</td>
+                <td colSpan={7} style={{ padding: '2rem', textAlign: 'center', color: 'var(--secondary)' }}>Nenhum produto cadastrado.</td>
               </tr>
             )}
             {produtos.map(p => (
@@ -51,7 +52,8 @@ export default async function AdminProdutos() {
                   </div>
                 </td>
                 <td style={{ padding: '1rem', maxWidth: '300px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.nome}</td>
-                <td style={{ padding: '1rem', textTransform: 'capitalize' }}>{p.plataforma}</td>
+                <td style={{ padding: '1rem', textTransform: 'capitalize' }}>{p.categoria || '-'}</td>
+                <td style={{ padding: '1rem', textTransform: 'capitalize' }}>{p.subcategoria || '-'}</td>
                 <td style={{ padding: '1rem' }}>
                   <span style={{ padding: '0.25rem 0.5rem', borderRadius: '1rem', fontSize: '0.75rem', fontWeight: 600, background: p.status === 'ATIVO' ? '#dcfce7' : '#f3f4f6', color: p.status === 'ATIVO' ? '#166534' : '#374151' }}>
                     {p.status}

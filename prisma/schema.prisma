@@ -24,6 +24,7 @@ model Produto {
   linkAfiliado  String        // Link original de afiliado
   plataforma    String        // "mercadolivre" | "shopee"
   categoria     String?
+  subcategoria  String?
   ordem         Int           @default(0)
   status        StatusProduto @default(ATIVO)
   ultimaChecagem DateTime?    // Última verificação do cron

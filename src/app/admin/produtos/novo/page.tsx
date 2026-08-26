@@ -94,8 +94,15 @@ export default function NovoProduto() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div>
                   <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.5rem' }}>Categoria</label>
-                  <input type="text" name="categoria" placeholder="Ex: Eletrônicos" style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)' }} />
+                  <input type="text" name="categoria" placeholder="Ex: tecnologia" style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)' }} />
                 </div>
+                <div>
+                  <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.5rem' }}>Subcategoria (Opcional)</label>
+                  <input type="text" name="subcategoria" placeholder="Ex: celulares" style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)' }} />
+                </div>
+              </div>
+              
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1rem' }}>
                 <div>
                   <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.5rem' }}>Ordem de exibição (Maior = primeiro)</label>
                   <input type="number" name="ordem" defaultValue="0" style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)' }} />

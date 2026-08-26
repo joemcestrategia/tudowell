@@ -17,6 +17,7 @@ export default async function Home({ searchParams }: PageProps) {
   
   const query = typeof sp?.q === 'string' ? sp.q : undefined;
   const categoria = typeof sp?.categoria === 'string' ? sp.categoria : undefined;
+  const subcategoria = typeof sp?.subcategoria === 'string' ? sp.subcategoria : undefined;
   const plataforma = typeof sp?.plataforma === 'string' ? sp.plataforma : undefined;
   const sort = typeof sp?.sort === 'string' ? sp.sort : 'recentes';
 
@@ -32,14 +33,25 @@ export default async function Home({ searchParams }: PageProps) {
 
   if (query) where.nome = { contains: query };
   if (categoria) where.categoria = categoria;
+  if (subcategoria) where.subcategoria = subcategoria;
   if (plataforma) where.plataforma = plataforma;
 
   let produtos: any[] = [];
+  let availableSubcategories: string[] = [];
   try {
     produtos = await prisma.produto.findMany({
       where,
       orderBy: [orderBy, { ordem: 'desc' }],
     });
+
+    if (categoria) {
+      const distinctSubs = await prisma.produto.findMany({
+        where: { categoria, status: 'ATIVO', subcategoria: { not: null } },
+        select: { subcategoria: true },
+        distinct: ['subcategoria']
+      });
+      availableSubcategories = distinctSubs.map(s => s.subcategoria).filter(Boolean) as string[];
+    }
   } catch (error) {
     produtos = [];
   }
@@ -150,11 +162,48 @@ export default async function Home({ searchParams }: PageProps) {
             boxShadow: 'var(--card-shadow)'
           }}>
             <h1 style={{ fontSize: '2.5rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '1px' }}>
-              {query ? `Busca: "${query}"` : categoria?.replace('-', ' ')}
+              {query ? `Busca: "${query}"` : subcategoria ? subcategoria.replace('-', ' ') : categoria?.replace('-', ' ')}
             </h1>
             <p style={{ opacity: 0.9, marginTop: '0.5rem', fontSize: '1.1rem' }}>
-              {query ? 'Confira os produtos que encontramos para você.' : 'Explore os melhores produtos selecionados para esta categoria.'}
+              {query ? 'Confira os produtos que encontramos para você.' : subcategoria ? `Explorando ${subcategoria.replace('-', ' ')} em ${categoria?.replace('-', ' ')}` : 'Explore os melhores produtos selecionados para esta categoria.'}
             </p>
+          </div>
+        )}
+
+        {/* Subcategorias Pills */}
+        {availableSubcategories.length > 0 && (
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '2rem', justifyContent: 'center' }}>
+            <Link 
+              href={`/?categoria=${categoria}`}
+              style={{
+                padding: '0.5rem 1rem',
+                borderRadius: '2rem',
+                fontWeight: 600,
+                fontSize: '0.875rem',
+                border: '1px solid var(--primary)',
+                background: !subcategoria ? 'var(--primary)' : 'transparent',
+                color: !subcategoria ? '#fff' : 'var(--primary)'
+              }}
+            >
+              Todos
+            </Link>
+            {availableSubcategories.map(sub => (
+              <Link
+                key={sub}
+                href={`/?categoria=${categoria}&subcategoria=${sub}`}
+                style={{
+                  padding: '0.5rem 1rem',
+                  borderRadius: '2rem',
+                  fontWeight: 600,
+                  fontSize: '0.875rem',
+                  border: '1px solid var(--primary)',
+                  background: subcategoria === sub ? 'var(--primary)' : 'transparent',
+                  color: subcategoria === sub ? '#fff' : 'var(--primary)'
+                }}
+              >
+                {sub}
+              </Link>
+            ))}
           </div>
         )}
 
