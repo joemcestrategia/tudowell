@@ -136,14 +136,36 @@ export default async function Home({ searchParams }: PageProps) {
 
       {/* Main Grid (Removido Sidebar) */}
       <main className="container" style={{ paddingBottom: '4rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', marginTop: query || categoria ? '2rem' : '0' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 800 }}>
-            {query ? `Resultados para "${query}"` : categoria ? `Categoria: ${categoria}` : 'Recém Adicionados (Novidades)'}
+        
+        {/* Banner Premium de Busca ou Categoria */}
+        {(query || categoria) && (
+          <div style={{
+            background: 'linear-gradient(135deg, var(--primary) 0%, #002266 100%)',
+            color: '#fff',
+            padding: '3rem 2rem',
+            borderRadius: 'var(--radius-lg)',
+            marginBottom: '2rem',
+            marginTop: '1.5rem',
+            textAlign: 'center',
+            boxShadow: 'var(--card-shadow)'
+          }}>
+            <h1 style={{ fontSize: '2.5rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '1px' }}>
+              {query ? `Busca: "${query}"` : categoria?.replace('-', ' ')}
+            </h1>
+            <p style={{ opacity: 0.9, marginTop: '0.5rem', fontSize: '1.1rem' }}>
+              {query ? 'Confira os produtos que encontramos para você.' : 'Explore os melhores produtos selecionados para esta categoria.'}
+            </p>
+          </div>
+        )}
+
+        <div className="products-header">
+          <h2 className="section-title">
+            {query || categoria ? 'Produtos encontrados' : 'Recém Adicionados (Novidades)'}
           </h2>
           
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <span style={{ fontSize: '0.875rem', fontWeight: 600 }}>Ordenar por:</span>
-            <select style={{ padding: '0.5rem', border: '1px solid var(--card-border)', borderRadius: 'var(--radius-md)', background: '#fff' }}>
+          <div className="sort-container">
+            <span>Ordenar por:</span>
+            <select>
               <option>Mais recentes</option>
               <option>Menor Preço</option>
               <option>Maior Preço</option>

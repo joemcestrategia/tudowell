@@ -87,7 +87,7 @@ function HeaderInner() {
                 }}
               />
             </form>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontWeight: 600, fontSize: '1rem', textTransform: 'uppercase' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontWeight: 600, fontSize: '1rem', textTransform: 'uppercase', color: 'var(--foreground)' }}>
               <Link href="/?categoria=tecnologia" onClick={() => setIsMobileMenuOpen(false)}>Tecnologia</Link>
               <Link href="/?categoria=eletro" onClick={() => setIsMobileMenuOpen(false)}>Eletrodomésticos</Link>
               <Link href="/?categoria=moda-masculina" onClick={() => setIsMobileMenuOpen(false)}>Masculino</Link>
@@ -97,7 +97,7 @@ function HeaderInner() {
               <Link href="/?categoria=infantil" onClick={() => setIsMobileMenuOpen(false)}>Infantil</Link>
               <Link href="/?categoria=religiosos" onClick={() => setIsMobileMenuOpen(false)}>Religiosos</Link>
               <Link href="/?categoria=casa" onClick={() => setIsMobileMenuOpen(false)}>Casa</Link>
-              <Link href="/?categoria=lancamentos" style={{ color: 'var(--accent)' }} onClick={() => setIsMobileMenuOpen(false)}>Novidades</Link>
+              <Link href="/?categoria=lancamentos" style={{ color: 'var(--primary)' }} onClick={() => setIsMobileMenuOpen(false)}>Novidades</Link>
               <div style={{ height: '1px', background: 'var(--card-border)', margin: '0.5rem 0' }}></div>
               <Link href="/sobre" style={{ color: 'var(--secondary)' }} onClick={() => setIsMobileMenuOpen(false)}>Sobre & Ajuda</Link>
             </div>
