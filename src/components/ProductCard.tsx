@@ -18,10 +18,6 @@ type ProdutoProps = {
 export default function ProductCard({ produto }: ProdutoProps) {
   const isShopee = produto.plataforma.toLowerCase() === 'shopee';
   const priceValue = produto.preco ? Number(produto.preco) : null;
-  
-  // Fake "original price" just for the aesthetic of the reference site 
-  // (usually it's 10-15% higher to show a discount)
-  const oldPrice = priceValue ? priceValue * 1.15 : null;
 
   return (
     <div className="product-card">
@@ -49,35 +45,25 @@ export default function ProductCard({ produto }: ProdutoProps) {
           </h3>
         </Link>
         
-        <div className="product-stars">
-          ★★★★★ <span style={{ color: '#ccc' }}>({produto.avaliacao ? produto.avaliacao.toFixed(1) : '5.0'})</span>
-        </div>
+        {produto.avaliacao ? (
+          <div className="product-stars">
+            ★ <span style={{ color: 'var(--foreground)', fontWeight: 600 }}>{produto.avaliacao.toFixed(1)}</span>
+          </div>
+        ) : null}
         
-        {priceValue && oldPrice ? (
-          <div style={{ marginTop: '0.5rem' }}>
-            <div className="product-price-old">
-              {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(oldPrice)}
-            </div>
+        {priceValue ? (
+          <div style={{ marginTop: '0.75rem' }}>
             <div className="product-price">
               {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(priceValue)}
             </div>
-            <div className="product-installments">
-              <span>R$ {(priceValue * 0.95).toFixed(2).replace('.', ',')} à vista com desconto ou 5x de R$ {(priceValue / 5).toFixed(2).replace('.', ',')} Sem juros</span>
-            </div>
           </div>
         ) : (
-          <div style={{ marginTop: '0.5rem' }}>
+          <div style={{ marginTop: '0.75rem' }}>
              <div className="product-price" style={{ color: 'var(--secondary)', fontSize: '1rem' }}>Preço sob consulta</div>
           </div>
         )}
-        
-        <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem', justifyContent: 'center' }}>
-          <div style={{ width: '15px', height: '15px', borderRadius: '50%', background: '#000', border: '1px solid #ccc' }}></div>
-          <div style={{ width: '15px', height: '15px', borderRadius: '50%', background: '#fff', border: '1px solid #ccc' }}></div>
-          <div style={{ width: '15px', height: '15px', borderRadius: '50%', background: '#0a3161', border: '1px solid #ccc' }}></div>
-        </div>
 
-        <div className="product-platform">
+        <div className="product-platform" style={{ marginTop: '0.75rem' }}>
            Via {isShopee ? 'Shopee' : 'Mercado Livre'}
         </div>
       </div>
