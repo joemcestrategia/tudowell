@@ -35,21 +35,11 @@ export default function ProductCard({ produto }: ProdutoProps) {
       </Link>
       
       <div className="product-info">
-        <span className="product-badge">
-          Novidade
-        </span>
-        
-        <Link href={produto.linkAfiliado} target="_blank" rel="nofollow sponsored noopener">
+        <Link href={produto.linkAfiliado} target="_blank" rel="nofollow sponsored noopener" style={{ textDecoration: 'none' }}>
           <h3 className="product-title" title={produto.nome}>
             {produto.nome}
           </h3>
         </Link>
-        
-        {produto.avaliacao ? (
-          <div className="product-stars">
-            ★ <span style={{ color: 'var(--foreground)', fontWeight: 600 }}>{produto.avaliacao.toFixed(1)}</span>
-          </div>
-        ) : null}
         
         {priceValue ? (
           <div style={{ marginTop: '0.75rem' }}>
