@@ -26,6 +26,7 @@ export default function ProductCard({ produto }: ProdutoProps) {
           <img 
             src={produto.imagemUrl} 
             alt={produto.nome}
+            referrerPolicy="no-referrer"
             style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}
             loading="lazy"
           />
