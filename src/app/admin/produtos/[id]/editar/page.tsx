@@ -26,7 +26,7 @@ export default async function EditarProduto({ params }: { params: Promise<{ id: 
         <input type="hidden" name="linkAfiliado" value={produto.linkAfiliado} />
         <input type="hidden" name="imagemUrl" value={produto.imagemUrl} />
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '2rem' }}>
+        <div className="admin-edit-grid">
           <div>
             <div style={{ width: '100%', aspectRatio: '1/1', background: '#f1f3f5', borderRadius: 'var(--radius-md)', overflow: 'hidden', marginBottom: '1rem' }}>
               {produto.imagemUrl && <img src={produto.imagemUrl} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />}
@@ -39,7 +39,7 @@ export default async function EditarProduto({ params }: { params: Promise<{ id: 
               <input type="text" name="nome" defaultValue={produto.nome} required style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)' }} />
             </div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="admin-edit-row">
               <div>
                 <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.5rem' }}>Preço (R$)</label>
                 <input type="number" step="0.01" name="preco" defaultValue={produto.preco ? produto.preco.toString() : ''} style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)' }} />
@@ -50,7 +50,7 @@ export default async function EditarProduto({ params }: { params: Promise<{ id: 
               </div>
             </div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="admin-edit-row">
               <div>
                 <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.5rem' }}>Categoria</label>
                 <select name="categoria" defaultValue={produto.categoria ?? ''} style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)', background: '#fff' }}>
@@ -106,7 +106,7 @@ export default async function EditarProduto({ params }: { params: Promise<{ id: 
               </div>
             </div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="admin-edit-row">
               <div>
                 <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.5rem' }}>Status</label>
                 <select name="status" defaultValue={produto.status} style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)', background: '#fff' }}>
