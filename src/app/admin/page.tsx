@@ -39,68 +39,74 @@ export default async function AdminProdutos({
         </Link>
       </div>
 
-      <form className="admin-filters" method="GET">
-        <input 
-          type="text" 
-          name="nome" 
-          placeholder="Buscar por nome..." 
-          defaultValue={nomeBusca} 
-        />
+      <details style={{ marginBottom: '1.5rem', background: 'var(--card-bg)', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)' }}>
+        <summary style={{ padding: '1rem', fontWeight: 600, cursor: 'pointer', outline: 'none' }}>
+          Filtrar Produtos
+        </summary>
         
-        <select name="categoria" defaultValue={categoriaBusca}>
-          <option value="">Todas as Categorias</option>
-          <option value="tecnologia">Tecnologia e Celulares</option>
-          <option value="eletro">Casa e Cozinha (Eletro)</option>
-          <option value="religiosos">Fé e Espiritualidade</option>
-          <option value="moda-masculina">Moda Masculina</option>
-          <option value="moda-feminina">Moda Feminina</option>
-          <option value="beleza">Beleza e Perfumaria</option>
-          <option value="esportes">Esportes e Lazer</option>
-          <option value="infantil">Infantil e Brinquedos</option>
-          <option value="casa">Casa e Decoração</option>
-          <option value="lancamentos">Lançamentos</option>
-          <option value="biblias">Bíblias</option>
-          <option value="moda">Moda (Geral)</option>
-        </select>
-        
-        <select name="subcategoria" defaultValue={subcategoriaBusca}>
-          <option value="">Todas Subcategorias</option>
-          <optgroup label="Tecnologia">
-            <option value="celulares">Celulares</option>
-            <option value="notebooks">Notebooks</option>
-            <option value="fones-de-ouvido">Fones de Ouvido</option>
-            <option value="smartwatches">Smartwatches</option>
-          </optgroup>
-          <optgroup label="Eletro e Casa">
-            <option value="geladeiras">Geladeiras</option>
-            <option value="fogoes">Fogões</option>
-            <option value="micro-ondas">Micro-ondas</option>
-            <option value="eletroportateis">Eletroportáteis</option>
-            <option value="moveis">Móveis</option>
-            <option value="decoracao">Decoração</option>
-          </optgroup>
-          <optgroup label="Moda e Beleza">
-            <option value="roupas-masculinas">Roupas Masculinas</option>
-            <option value="roupas-femininas">Roupas Femininas</option>
-            <option value="calcados">Calçados</option>
-            <option value="acessorios">Acessórios</option>
-            <option value="perfumes">Perfumes</option>
-            <option value="maquiagem">Maquiagem</option>
-            <option value="skincare">Skincare</option>
-          </optgroup>
-          <optgroup label="Outros">
-            <option value="brinquedos">Brinquedos</option>
-            <option value="artigos-esportivos">Artigos Esportivos</option>
-            <option value="livros">Livros</option>
-            <option value="ferramentas">Ferramentas</option>
-          </optgroup>
-        </select>
-        
-        <div style={{ display: 'flex', gap: '0.5rem', flexGrow: 1, minWidth: '150px' }}>
-          <button type="submit" className="btn-primary" style={{ flex: 1, padding: '0.5rem', fontSize: '0.875rem' }}>Buscar</button>
-          <Link href="/admin" className="btn-primary" style={{ flex: 1, padding: '0.5rem', background: 'var(--secondary)', textAlign: 'center', fontSize: '0.875rem' }}>Limpar</Link>
-        </div>
-      </form>
+        <form className="admin-filters" method="GET" style={{ border: 'none', marginBottom: 0, paddingTop: 0, borderRadius: 0, borderTop: '1px solid var(--card-border)' }}>
+          <input 
+            type="text" 
+            name="nome" 
+            placeholder="Buscar por nome..." 
+            defaultValue={nomeBusca} 
+          />
+          
+          <select name="categoria" defaultValue={categoriaBusca}>
+            <option value="">Todas as Categorias</option>
+            <option value="tecnologia">Tecnologia e Celulares</option>
+            <option value="eletro">Casa e Cozinha (Eletro)</option>
+            <option value="religiosos">Fé e Espiritualidade</option>
+            <option value="moda-masculina">Moda Masculina</option>
+            <option value="moda-feminina">Moda Feminina</option>
+            <option value="beleza">Beleza e Perfumaria</option>
+            <option value="esportes">Esportes e Lazer</option>
+            <option value="infantil">Infantil e Brinquedos</option>
+            <option value="casa">Casa e Decoração</option>
+            <option value="lancamentos">Lançamentos</option>
+            <option value="biblias">Bíblias</option>
+            <option value="moda">Moda (Geral)</option>
+          </select>
+          
+          <select name="subcategoria" defaultValue={subcategoriaBusca}>
+            <option value="">Todas Subcategorias</option>
+            <optgroup label="Tecnologia">
+              <option value="celulares">Celulares</option>
+              <option value="notebooks">Notebooks</option>
+              <option value="fones-de-ouvido">Fones de Ouvido</option>
+              <option value="smartwatches">Smartwatches</option>
+            </optgroup>
+            <optgroup label="Eletro e Casa">
+              <option value="geladeiras">Geladeiras</option>
+              <option value="fogoes">Fogões</option>
+              <option value="micro-ondas">Micro-ondas</option>
+              <option value="eletroportateis">Eletroportáteis</option>
+              <option value="moveis">Móveis</option>
+              <option value="decoracao">Decoração</option>
+            </optgroup>
+            <optgroup label="Moda e Beleza">
+              <option value="roupas-masculinas">Roupas Masculinas</option>
+              <option value="roupas-femininas">Roupas Femininas</option>
+              <option value="calcados">Calçados</option>
+              <option value="acessorios">Acessórios</option>
+              <option value="perfumes">Perfumes</option>
+              <option value="maquiagem">Maquiagem</option>
+              <option value="skincare">Skincare</option>
+            </optgroup>
+            <optgroup label="Outros">
+              <option value="brinquedos">Brinquedos</option>
+              <option value="artigos-esportivos">Artigos Esportivos</option>
+              <option value="livros">Livros</option>
+              <option value="ferramentas">Ferramentas</option>
+            </optgroup>
+          </select>
+          
+          <div style={{ display: 'flex', gap: '0.5rem', flexGrow: 1, minWidth: '150px' }}>
+            <button type="submit" className="btn-primary" style={{ flex: 1, padding: '0.5rem', fontSize: '0.875rem' }}>Buscar</button>
+            <Link href="/admin" className="btn-primary" style={{ flex: 1, padding: '0.5rem', background: 'var(--secondary)', textAlign: 'center', fontSize: '0.875rem' }}>Limpar</Link>
+          </div>
+        </form>
+      </details>
 
       {produtos.length === 0 && (
         <div style={{ padding: '3rem', textAlign: 'center', color: 'var(--secondary)', background: 'var(--card-bg)', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)' }}>
