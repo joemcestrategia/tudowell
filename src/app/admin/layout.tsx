@@ -46,7 +46,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         zIndex: 998 
       }}>
         <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', marginTop: '2px' }}>
-          <span style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--primary)', letterSpacing: '-1.5px', lineHeight: 1 }}>
+          <span style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--primary)', letterSpacing: '-1.5px', lineHeight: 1 }}>
             Tudo<span style={{ color: '#000', fontWeight: 300 }}>|</span><span style={{ color: 'var(--accent)' }}>Well</span>
           </span>
         </Link>
@@ -75,7 +75,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div style={{ padding: '1.5rem', borderBottom: '1px solid var(--card-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div>
             <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.2rem', textDecoration: 'none' }}>
-              <span style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--primary)', letterSpacing: '-1.5px', lineHeight: 1 }}>
+              <span style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--primary)', letterSpacing: '-1.5px', lineHeight: 1 }}>
                 Tudo<span style={{ color: '#000', fontWeight: 300 }}>|</span><span style={{ color: 'var(--accent)' }}>Well</span>
               </span>
             </Link>
