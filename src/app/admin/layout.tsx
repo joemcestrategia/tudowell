@@ -45,7 +45,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         padding: '0 1rem', 
         zIndex: 998 
       }}>
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', marginTop: '2px' }}>
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.2rem', textDecoration: 'none' }}>
           <span style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--primary)', letterSpacing: '-1.5px', lineHeight: 1 }}>
             Tudo<span style={{ color: '#000', fontWeight: 300 }}>|</span><span style={{ color: 'var(--accent)' }}>Well</span>
           </span>
@@ -53,20 +53,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <button 
           onClick={() => setIsMenuOpen(true)}
           style={{ 
-            background: 'transparent', 
+            background: 'none',
             border: 'none',
-            padding: 0,
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            fontSize: '1.5rem',
             color: 'var(--foreground)',
-            marginLeft: 'auto'
+            cursor: 'pointer',
+            padding: '0.2rem'
           }}
         >
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          ☰
         </button>
       </div>
 

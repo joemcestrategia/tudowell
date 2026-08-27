@@ -15,10 +15,7 @@ export default async function EditarProduto({ params }: { params: Promise<{ id: 
 
   return (
     <div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-        <Link href="/admin" style={{ color: 'var(--secondary)', textDecoration: 'none' }}>← Voltar</Link>
-        <h1 style={{ fontSize: '1.75rem', fontWeight: 800 }}>Editar Produto</h1>
-      </div>
+      <div style={{ marginBottom: '1rem' }}></div>
 
       <form action={atualizarProduto} style={{ background: 'var(--card-bg)', padding: '2rem', borderRadius: 'var(--radius-lg)', border: '1px solid var(--card-border)' }}>
         <input type="hidden" name="id" value={produto.id} />
@@ -121,8 +118,9 @@ export default async function EditarProduto({ params }: { params: Promise<{ id: 
               </div>
             </div>
             
-            <div style={{ marginTop: '1rem' }}>
+            <div style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <button type="submit" className="btn-primary" style={{ width: '100%' }}>Salvar Alterações</button>
+              <Link href="/admin" style={{ display: 'block', textAlign: 'center', color: 'var(--secondary)', textDecoration: 'none', fontWeight: 600, padding: '0.5rem' }}>← Voltar</Link>
             </div>
           </div>
         </div>
