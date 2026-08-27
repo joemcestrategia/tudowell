@@ -255,20 +255,7 @@ export default async function Home({ searchParams }: PageProps) {
 
         {produtos.length > 0 && (
           <>
-            <div className="products-header">
-              <h2 className="section-title">
-                {query || categoria ? 'Produtos encontrados' : 'Recém Adicionados (Novidades)'}
-              </h2>
-              
-              <div className="sort-container">
-                <span>Ordenar por:</span>
-                <select>
-                  <option>Mais recentes</option>
-                  <option>Menor Preço</option>
-                  <option>Maior Preço</option>
-                </select>
-              </div>
-            </div>
+
 
             <div className="product-grid">
               {produtos.map((p) => (
