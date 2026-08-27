@@ -32,23 +32,38 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         onClick={() => setIsMenuOpen(false)}
       />
 
-      {/* Hamburger Button (Mobile Only) */}
-      <div className="mobile-only" style={{ position: 'fixed', top: '1rem', right: '1rem', zIndex: 998 }}>
+      {/* Mobile Header (Only visible on mobile) */}
+      <div className="mobile-only" style={{ 
+        position: 'fixed', 
+        top: 0, left: 0, right: 0, 
+        height: '60px', 
+        background: 'var(--card-bg)', 
+        borderBottom: '1px solid var(--card-border)', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'space-between', 
+        padding: '0 1rem', 
+        zIndex: 998 
+      }}>
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+          <span style={{ fontSize: '1.25rem', fontWeight: 900, color: 'var(--primary)', letterSpacing: '-1px' }}>
+            Tudo<span style={{ color: '#000', fontWeight: 300 }}>|</span><span style={{ color: 'var(--accent)' }}>Well</span>
+          </span>
+        </Link>
         <button 
           onClick={() => setIsMenuOpen(true)}
           style={{ 
-            background: 'var(--card-bg)', 
-            border: '1px solid var(--card-border)',
+            background: 'transparent', 
+            border: 'none',
             padding: '0.5rem',
-            borderRadius: 'var(--radius-md)',
-            boxShadow: 'var(--shadow-md)',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            color: 'var(--foreground)'
           }}
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>

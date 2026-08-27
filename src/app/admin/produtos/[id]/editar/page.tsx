@@ -42,11 +42,11 @@ export default async function EditarProduto({ params }: { params: Promise<{ id: 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               <div>
                 <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.5rem' }}>Preço (R$)</label>
-                <input type="number" step="0.01" name="preco" defaultValue={produto.preco ?? ''} style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)' }} />
+                <input type="number" step="0.01" name="preco" defaultValue={produto.preco ? produto.preco.toString() : ''} style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)' }} />
               </div>
               <div>
                 <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.5rem' }}>Avaliação (0-5)</label>
-                <input type="number" step="0.1" name="avaliacao" defaultValue={produto.avaliacao ?? ''} max="5" min="0" style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)' }} />
+                <input type="number" step="0.1" name="avaliacao" defaultValue={produto.avaliacao ? produto.avaliacao.toString() : ''} max="5" min="0" style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)' }} />
               </div>
             </div>
             
