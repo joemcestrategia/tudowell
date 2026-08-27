@@ -94,11 +94,56 @@ export default function NovoProduto() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div>
                   <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.5rem' }}>Categoria</label>
-                  <input type="text" name="categoria" placeholder="Ex: tecnologia" style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)' }} />
+                  <select name="categoria" style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)', background: '#fff' }}>
+                    <option value="">Selecione a categoria</option>
+                    <option value="tecnologia">Tecnologia e Celulares</option>
+                    <option value="eletro">Casa e Cozinha (Eletro)</option>
+                    <option value="religiosos">Fé e Espiritualidade</option>
+                    <option value="moda-masculina">Moda Masculina</option>
+                    <option value="moda-feminina">Moda Feminina</option>
+                    <option value="beleza">Beleza e Perfumaria</option>
+                    <option value="esportes">Esportes e Lazer</option>
+                    <option value="infantil">Infantil e Brinquedos</option>
+                    <option value="casa">Casa e Decoração</option>
+                    <option value="lancamentos">Lançamentos</option>
+                    <option value="biblias">Bíblias</option>
+                    <option value="moda">Moda (Geral)</option>
+                  </select>
                 </div>
                 <div>
                   <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.5rem' }}>Subcategoria (Opcional)</label>
-                  <input type="text" name="subcategoria" placeholder="Ex: celulares" style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)' }} />
+                  <select name="subcategoria" style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)', background: '#fff' }}>
+                    <option value="">Nenhuma</option>
+                    <optgroup label="Tecnologia">
+                      <option value="celulares">Celulares</option>
+                      <option value="notebooks">Notebooks</option>
+                      <option value="fones-de-ouvido">Fones de Ouvido</option>
+                      <option value="smartwatches">Smartwatches</option>
+                    </optgroup>
+                    <optgroup label="Eletro e Casa">
+                      <option value="geladeiras">Geladeiras</option>
+                      <option value="fogoes">Fogões</option>
+                      <option value="micro-ondas">Micro-ondas</option>
+                      <option value="eletroportateis">Eletroportáteis</option>
+                      <option value="moveis">Móveis</option>
+                      <option value="decoracao">Decoração</option>
+                    </optgroup>
+                    <optgroup label="Moda e Beleza">
+                      <option value="roupas-masculinas">Roupas Masculinas</option>
+                      <option value="roupas-femininas">Roupas Femininas</option>
+                      <option value="calcados">Calçados</option>
+                      <option value="acessorios">Acessórios</option>
+                      <option value="perfumes">Perfumes</option>
+                      <option value="maquiagem">Maquiagem</option>
+                      <option value="skincare">Skincare</option>
+                    </optgroup>
+                    <optgroup label="Outros">
+                      <option value="brinquedos">Brinquedos</option>
+                      <option value="artigos-esportivos">Artigos Esportivos</option>
+                      <option value="livros">Livros</option>
+                      <option value="ferramentas">Ferramentas</option>
+                    </optgroup>
+                  </select>
                 </div>
               </div>
               

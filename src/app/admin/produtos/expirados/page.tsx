@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
+import DeleteButton from '../DeleteButton';
 
 export const revalidate = 0;
 
@@ -21,7 +22,7 @@ export default async function ProdutosExpirados() {
         <p style={{ color: 'var(--secondary)' }}>Estes produtos foram marcados como indisponíveis automaticamente pelo sistema e não aparecem na vitrine.</p>
       </div>
 
-      <div style={{ background: 'var(--card-bg)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--card-border)', overflow: 'hidden' }}>
+      <div className="responsive-table">
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
           <thead>
             <tr style={{ background: 'rgba(0,0,0,0.02)', borderBottom: '1px solid var(--card-border)' }}>
@@ -40,20 +41,21 @@ export default async function ProdutosExpirados() {
             )}
             {produtos.map(p => (
               <tr key={p.id} style={{ borderBottom: '1px solid var(--card-border)' }}>
-                <td style={{ padding: '1rem' }}>
-                  <div style={{ width: '50px', height: '50px', borderRadius: 'var(--radius-sm)', background: '#eee', overflow: 'hidden' }}>
+                <td data-label="Imagem" style={{ padding: '1rem' }}>
+                  <div style={{ width: '50px', height: '50px', borderRadius: 'var(--radius-sm)', background: '#eee', overflow: 'hidden', display: 'inline-block' }}>
                     <img src={p.imagemUrl} alt={p.nome} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
                 </td>
-                <td style={{ padding: '1rem', maxWidth: '300px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.nome}</td>
-                <td style={{ padding: '1rem', textTransform: 'capitalize' }}>{p.plataforma}</td>
-                <td style={{ padding: '1rem', color: 'var(--secondary)' }}>
+                <td data-label="Nome" style={{ padding: '1rem', whiteSpace: 'normal', wordBreak: 'break-word' }}>{p.nome}</td>
+                <td data-label="Plataforma" style={{ padding: '1rem', textTransform: 'capitalize' }}>{p.plataforma}</td>
+                <td data-label="Última Checagem" style={{ padding: '1rem', color: 'var(--secondary)' }}>
                   {p.ultimaChecagem ? new Date(p.ultimaChecagem).toLocaleString('pt-BR') : 'Desconhecido'}
                 </td>
-                <td style={{ padding: '1rem' }}>
-                  <Link href={`/admin/produtos/${p.id}/editar`} style={{ color: 'var(--primary)', fontWeight: 600, marginRight: '1rem' }}>
+                <td data-label="Ações" style={{ padding: '1rem', display: 'flex', gap: '1rem', justifyContent: 'flex-end', alignItems: 'center' }}>
+                  <Link href={`/admin/produtos/${p.id}/editar`} style={{ color: 'var(--primary)', fontWeight: 600 }}>
                     Editar / Reativar
                   </Link>
+                  <DeleteButton id={p.id} />
                 </td>
               </tr>
             ))}

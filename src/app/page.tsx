@@ -62,6 +62,24 @@ export default async function Home({ searchParams }: PageProps) {
   //   produtos = [...]
   // }
 
+  const getBannerImage = (cat?: string) => {
+    switch (cat) {
+      case 'tecnologia': return '/images/banners/banner_tech.jpg';
+      case 'eletro': return '/images/banners/banner_home.jpg';
+      case 'religiosos': return '/images/banners/banner_religious.jpg';
+      case 'moda-masculina': return '/images/banners/banner_men.jpg';
+      case 'moda-feminina': return '/images/banners/banner_women.jpg';
+      case 'beleza': return '/images/banners/banner_beauty.jpg';
+      case 'esportes': return '/images/banners/banner_sports.jpg';
+      case 'infantil': return '/images/banners/banner_kids.jpg';
+      case 'casa': return '/images/banners/banner_house.jpg';
+      case 'lancamentos': return '/images/banners/banner_new.jpg';
+      case 'biblias': return '/images/banners/banner_bibles.jpg';
+      case 'moda': return '/images/banners/banner_fashion.jpg';
+      default: return '/images/hero_megastore.jpg';
+    }
+  };
+
   return (
     <>
       <Header />
@@ -152,21 +170,49 @@ export default async function Home({ searchParams }: PageProps) {
         {/* Banner Premium de Busca ou Categoria */}
         {(query || categoria) && (
           <div style={{
-            background: 'linear-gradient(135deg, var(--primary) 0%, #002266 100%)',
-            color: '#fff',
-            padding: '3rem 2rem',
-            borderRadius: 'var(--radius-lg)',
+            position: 'relative',
+            width: '100%',
+            height: '250px',
             marginBottom: '2rem',
-            marginTop: '1.5rem',
-            textAlign: 'center',
-            boxShadow: 'var(--card-shadow)'
+            borderRadius: 'var(--radius-lg)',
+            overflow: 'hidden',
+            boxShadow: 'var(--shadow-md)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}>
-            <h1 style={{ fontSize: '2.5rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '1px' }}>
-              {query ? `Busca: "${query}"` : subcategoria ? subcategoria.replace('-', ' ') : categoria?.replace('-', ' ')}
-            </h1>
-            <p style={{ opacity: 0.9, marginTop: '0.5rem', fontSize: '1.1rem' }}>
-              {query ? 'Confira os produtos que encontramos para você.' : subcategoria ? `Explorando ${subcategoria.replace('-', ' ')} em ${categoria?.replace('-', ' ')}` : 'Explore os melhores produtos selecionados para esta categoria.'}
-            </p>
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundImage: `url(${getBannerImage(categoria)})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }} />
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.4))'
+            }} />
+            <div style={{
+              position: 'relative',
+              zIndex: 1,
+              textAlign: 'center',
+              color: '#fff',
+              padding: '0 2rem'
+            }}>
+              <h1 style={{ fontSize: '2.5rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '1px' }}>
+                {query ? `Busca: "${query}"` : subcategoria ? subcategoria.replace('-', ' ') : categoria?.replace('-', ' ')}
+              </h1>
+              <p style={{ opacity: 0.9, marginTop: '0.5rem', fontSize: '1.1rem' }}>
+                {query ? 'Confira os produtos que encontramos para você.' : subcategoria ? `Explorando ${subcategoria.replace('-', ' ')} em ${categoria?.replace('-', ' ')}` : 'Explore os melhores produtos selecionados para esta categoria.'}
+              </p>
+            </div>
           </div>
         )}
 

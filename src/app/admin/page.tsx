@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
+import DeleteButton from './produtos/DeleteButton';
 
 export const revalidate = 0; // Don't cache admin pages
 
@@ -18,14 +19,14 @@ export default async function AdminProdutos() {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
         <h1 style={{ fontSize: '1.75rem', fontWeight: 800 }}>Produtos Ativos / Ocultos</h1>
         <Link href="/admin/produtos/novo" className="btn-primary">
           + Novo Produto
         </Link>
       </div>
 
-      <div style={{ background: 'var(--card-bg)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--card-border)', overflow: 'hidden' }}>
+      <div className="responsive-table">
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
           <thead>
             <tr style={{ background: 'rgba(0,0,0,0.02)', borderBottom: '1px solid var(--card-border)' }}>
@@ -46,24 +47,25 @@ export default async function AdminProdutos() {
             )}
             {produtos.map(p => (
               <tr key={p.id} style={{ borderBottom: '1px solid var(--card-border)' }}>
-                <td style={{ padding: '1rem' }}>
-                  <div style={{ width: '50px', height: '50px', borderRadius: 'var(--radius-sm)', background: '#eee', overflow: 'hidden' }}>
+                <td data-label="Imagem" style={{ padding: '1rem' }}>
+                  <div style={{ width: '50px', height: '50px', borderRadius: 'var(--radius-sm)', background: '#eee', overflow: 'hidden', display: 'inline-block' }}>
                     <img src={p.imagemUrl} alt={p.nome} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
                 </td>
-                <td style={{ padding: '1rem', maxWidth: '300px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.nome}</td>
-                <td style={{ padding: '1rem', textTransform: 'capitalize' }}>{p.categoria || '-'}</td>
-                <td style={{ padding: '1rem', textTransform: 'capitalize' }}>{p.subcategoria || '-'}</td>
-                <td style={{ padding: '1rem' }}>
+                <td data-label="Nome" style={{ padding: '1rem', whiteSpace: 'normal', wordBreak: 'break-word' }}>{p.nome}</td>
+                <td data-label="Categoria" style={{ padding: '1rem', textTransform: 'capitalize' }}>{p.categoria || '-'}</td>
+                <td data-label="Subcategoria" style={{ padding: '1rem', textTransform: 'capitalize' }}>{p.subcategoria || '-'}</td>
+                <td data-label="Status" style={{ padding: '1rem' }}>
                   <span style={{ padding: '0.25rem 0.5rem', borderRadius: '1rem', fontSize: '0.75rem', fontWeight: 600, background: p.status === 'ATIVO' ? '#dcfce7' : '#f3f4f6', color: p.status === 'ATIVO' ? '#166534' : '#374151' }}>
                     {p.status}
                   </span>
                 </td>
-                <td style={{ padding: '1rem' }}>{p.ordem}</td>
-                <td style={{ padding: '1rem' }}>
-                  <Link href={`/admin/produtos/${p.id}/editar`} style={{ color: 'var(--primary)', fontWeight: 600, marginRight: '1rem' }}>
+                <td data-label="Ordem" style={{ padding: '1rem' }}>{p.ordem}</td>
+                <td data-label="Ações" style={{ padding: '1rem', display: 'flex', gap: '1rem', justifyContent: 'flex-end', alignItems: 'center' }}>
+                  <Link href={`/admin/produtos/${p.id}/editar`} style={{ color: 'var(--primary)', fontWeight: 600 }}>
                     Editar
                   </Link>
+                  <DeleteButton id={p.id} />
                 </td>
               </tr>
             ))}

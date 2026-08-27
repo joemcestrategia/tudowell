@@ -1,11 +1,18 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  // Close menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
   
   if (pathname === '/admin/login') {
     return <>{children}</>;
@@ -18,15 +25,52 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', background: 'var(--background)' }}>
+      {/* Overlay mobile */}
+      <div 
+        className={`admin-overlay ${isMenuOpen ? 'admin-overlay-open' : ''}`} 
+        style={{ display: isMenuOpen ? 'block' : 'none' }}
+        onClick={() => setIsMenuOpen(false)}
+      />
+
+      {/* Hamburger Button (Mobile Only) */}
+      <div className="mobile-only" style={{ position: 'fixed', top: '1rem', right: '1rem', zIndex: 998 }}>
+        <button 
+          onClick={() => setIsMenuOpen(true)}
+          style={{ 
+            background: 'var(--card-bg)', 
+            border: '1px solid var(--card-border)',
+            padding: '0.5rem',
+            borderRadius: 'var(--radius-md)',
+            boxShadow: 'var(--shadow-md)',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
       {/* Sidebar Admin */}
-      <aside style={{ width: '250px', background: 'var(--card-bg)', borderRight: '1px solid var(--card-border)', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ padding: '1.5rem', borderBottom: '1px solid var(--card-border)' }}>
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.2rem', textDecoration: 'none' }}>
-            <span style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--primary)', letterSpacing: '-1.5px', lineHeight: 1 }}>
-              Tudo<span style={{ color: '#000', fontWeight: 300 }}>|</span><span style={{ color: 'var(--accent)' }}>Well</span>
-            </span>
-          </Link>
-          <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--secondary)', textTransform: 'uppercase', marginTop: '0.5rem', letterSpacing: '1px' }}>Painel Admin</div>
+      <aside className={`admin-sidebar ${isMenuOpen ? 'open' : ''}`} style={{ width: '250px', background: 'var(--card-bg)', borderRight: '1px solid var(--card-border)', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ padding: '1.5rem', borderBottom: '1px solid var(--card-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div>
+            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.2rem', textDecoration: 'none' }}>
+              <span style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--primary)', letterSpacing: '-1.5px', lineHeight: 1 }}>
+                Tudo<span style={{ color: '#000', fontWeight: 300 }}>|</span><span style={{ color: 'var(--accent)' }}>Well</span>
+              </span>
+            </Link>
+            <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--secondary)', textTransform: 'uppercase', marginTop: '0.5rem', letterSpacing: '1px' }}>Painel Admin</div>
+          </div>
+          {/* Close button inside sidebar for mobile */}
+          <button className="mobile-only" onClick={() => setIsMenuOpen(false)} style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
         </div>
         
         <nav style={{ padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', flexGrow: 1 }}>
@@ -49,7 +93,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </aside>
       
       {/* Main Content */}
-      <main style={{ flexGrow: 1, padding: '2rem', overflowY: 'auto', height: '100vh' }}>
+      <main className="admin-main" style={{ flexGrow: 1, padding: '2rem', overflowY: 'auto', height: '100vh', width: '100%' }}>
         {children}
       </main>
     </div>

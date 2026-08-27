@@ -535,5 +535,102 @@ button, input, select {
     z-index: 100;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   }
+
+  /* Responsive Table for Admin */
+  .responsive-table {
+    border: none !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+  }
+  .responsive-table table, 
+  .responsive-table thead, 
+  .responsive-table tbody, 
+  .responsive-table th, 
+  .responsive-table td, 
+  .responsive-table tr { 
+    display: block; 
+  }
+  
+  .responsive-table thead tr { 
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  .responsive-table tr { 
+    border: 1px solid var(--card-border); 
+    margin-bottom: 1rem; 
+    border-radius: var(--radius-md); 
+    background: var(--card-bg);
+    overflow: hidden; 
+  }
+  
+  .responsive-table td { 
+    border: none;
+    border-bottom: 1px solid #eee; 
+    position: relative;
+    padding: 1rem !important;
+    padding-left: 40% !important; 
+    text-align: right !important;
+    min-height: 50px;
+    /* display block resolve o problema de sobreposição do texto longo que ocorria com flex-end */
+    display: block; 
+  }
+  
+  .responsive-table td:before { 
+    position: absolute;
+    left: 1rem;
+    top: 1rem; /* Alinha o label ao topo para acompanhar padding */
+    width: 35%; 
+    padding-right: 10px; 
+    text-align: left;
+    font-weight: 600;
+    content: attr(data-label);
+  }
+
+  .responsive-table td:last-child {
+    border-bottom: 0;
+  }
+
+  /* Admin Sidebar Responsive */
+  .admin-sidebar {
+    position: fixed !important;
+    top: 0;
+    bottom: 0;
+    right: 0; /* Menu do lado direito */
+    left: auto !important;
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  }
+
+  .admin-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .admin-overlay {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+  }
+
+  .admin-main {
+    padding: 1rem !important;
+  }
+}
+
+.admin-sidebar {
+  /* Default Desktop styles are handled by React inline styles, 
+     but we add a class to hook into media queries */
+  transition: transform 0.3s ease-in-out;
+}
+.admin-overlay {
+  display: none;
 }
 
