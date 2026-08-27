@@ -32,8 +32,7 @@ export default async function AdminProdutos({
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-        <h1 style={{ fontSize: '1.75rem', fontWeight: 800 }}>Produtos Ativos / Ocultos</h1>
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '1.5rem' }}>
         <Link href="/admin/produtos/novo" className="btn-primary btn-fab">
           <span className="btn-fab-icon">+</span>
           <span className="btn-fab-text">Novo Produto</span>
