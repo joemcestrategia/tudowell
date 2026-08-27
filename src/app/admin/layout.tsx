@@ -33,13 +33,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       />
 
       {/* Mobile Header (Only visible on mobile) */}
-      <div className="mobile-only" style={{ 
+      <div className="admin-mobile-header" style={{ 
         position: 'fixed', 
         top: 0, left: 0, right: 0, 
         height: '60px', 
         background: 'var(--card-bg)', 
         borderBottom: '1px solid var(--card-border)', 
-        display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'space-between', 
         padding: '0 1rem', 

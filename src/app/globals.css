@@ -792,3 +792,14 @@ button, input, select {
   }
 }
 
+/* Admin Mobile Header */
+.admin-mobile-header {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .admin-mobile-header {
+    display: flex !important;
+  }
+}
+
