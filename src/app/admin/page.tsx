@@ -97,8 +97,8 @@ export default async function AdminProdutos({
         </select>
         
         <div style={{ display: 'flex', gap: '0.5rem', flexGrow: 1, minWidth: '150px' }}>
-          <button type="submit" className="btn-primary" style={{ flex: 1, padding: '0.75rem' }}>Buscar</button>
-          <Link href="/admin" className="btn-primary" style={{ flex: 1, padding: '0.75rem', background: 'var(--secondary)', textAlign: 'center' }}>Limpar</Link>
+          <button type="submit" className="btn-primary" style={{ flex: 1, padding: '0.5rem', fontSize: '0.875rem' }}>Buscar</button>
+          <Link href="/admin" className="btn-primary" style={{ flex: 1, padding: '0.5rem', background: 'var(--secondary)', textAlign: 'center', fontSize: '0.875rem' }}>Limpar</Link>
         </div>
       </form>
 
