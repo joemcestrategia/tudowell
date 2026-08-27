@@ -738,3 +738,33 @@ button, input, select {
   }
 }
 
+/* FAB Button (Mobile) */
+.btn-fab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .btn-fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 1.5rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    padding: 0;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 990;
+  }
+  .btn-fab-text {
+    display: none;
+  }
+  .btn-fab-icon {
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+}
+
