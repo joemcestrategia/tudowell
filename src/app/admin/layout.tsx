@@ -45,8 +45,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         padding: '0 1rem', 
         zIndex: 998 
       }}>
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-          <span style={{ fontSize: '1.25rem', fontWeight: 900, color: 'var(--primary)', letterSpacing: '-1px', lineHeight: 1 }}>
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', marginTop: '2px' }}>
+          <span style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--primary)', letterSpacing: '-1.5px', lineHeight: 1 }}>
             Tudo<span style={{ color: '#000', fontWeight: 300 }}>|</span><span style={{ color: 'var(--accent)' }}>Well</span>
           </span>
         </Link>
