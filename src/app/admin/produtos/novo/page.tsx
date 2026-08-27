@@ -35,24 +35,26 @@ export default function NovoProduto() {
 
   return (
     <div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-        <Link href="/admin" style={{ color: 'var(--secondary)', textDecoration: 'none' }}>← Voltar</Link>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '2rem' }}>
         <h1 style={{ fontSize: '1.75rem', fontWeight: 800 }}>Novo Produto</h1>
       </div>
 
       <div style={{ background: 'var(--card-bg)', padding: '2rem', borderRadius: 'var(--radius-lg)', border: '1px solid var(--card-border)', marginBottom: '2rem' }}>
         <h2 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>1. Importar Produto</h2>
-        <div style={{ display: 'flex', gap: '1rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <input 
             type="url" 
             placeholder="Cole o link do Mercado Livre ou Shopee..." 
             value={link} 
             onChange={(e) => setLink(e.target.value)} 
-            style={{ flexGrow: 1, padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)' }}
+            style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--card-border)' }}
           />
-          <button onClick={handleExtract} disabled={loadingExtract || !link} className="btn-primary">
+          <button onClick={handleExtract} disabled={loadingExtract || !link} className="btn-primary" style={{ width: '100%', padding: '0.75rem' }}>
             {loadingExtract ? 'Buscando...' : 'Buscar Dados'}
           </button>
+          <Link href="/admin" style={{ display: 'block', textAlign: 'center', color: 'var(--secondary)', textDecoration: 'none', padding: '0.5rem', marginTop: '0.5rem', fontWeight: 600 }}>
+            ← Voltar para a lista
+          </Link>
         </div>
         {error && <div style={{ color: '#c62828', marginTop: '1rem' }}>{error}</div>}
       </div>
